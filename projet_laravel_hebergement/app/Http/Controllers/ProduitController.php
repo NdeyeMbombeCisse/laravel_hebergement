@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Cathegorie;
 use App\Models\Produit;
+use Illuminate\Foundation\Auth\User;
 use Illuminate\Http\Request;
 
 class ProduitController extends Controller
@@ -34,13 +35,14 @@ class ProduitController extends Controller
 
     );
         Produit::create($request->all());
-        return redirect()->back()->with('status','produit ajoute avec succes');
+        return redirect('afficher_produit')->with('status','produit ajoute avec succes');
     
     }
 
     public function afficher_produit(){
+        $users=User::all();
         $produits=Produit::all();
-        return view('Produits.afficher',compact('produits'));
+        return view('Produits.afficher',compact('produits','users'));
     }
 
     public function detail_produit($id){
@@ -51,5 +53,16 @@ class ProduitController extends Controller
         $produit=Produit::find($id);
         $produit->delete();
         return redirect()->back();
+    }
+    public function modifier_produit($id){
+        $cathegories=Cathegorie::all();
+        $produit=Produit::find($id);
+        return view('Produits.modifier',compact('produit','cathegories'));
+    }
+
+    public function sauvegarder_produit_modification(Request $request,$id){
+        $produit=Produit::find($id);
+        $produit->update($request->all());
+        return redirect('afficher_produit')->with('status','produit modifie avec succes');
     }
 }

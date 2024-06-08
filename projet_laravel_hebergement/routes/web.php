@@ -20,6 +20,9 @@ Route::post('sauvegarder_produit',[ProduitController::class, 'sauvegarder_produi
 Route::get('afficher_produit',[ProduitController::class, 'afficher_produit']);
 Route::get('detail/{id}',[ProduitController::class, 'detail_produit']);
 Route::get('supprimer/{id}',[ProduitController::class, 'supprmier_produit']);
+Route::get('modifier_produit/{id}',[ProduitController::class, 'modifier_produit']);
+Route::post('sauvegarder_produit_modification/{id}',[ProduitController::class, 'sauvegarder_produit_modification']);
+
 
 
 

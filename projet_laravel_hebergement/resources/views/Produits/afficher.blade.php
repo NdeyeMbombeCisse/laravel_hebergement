@@ -40,6 +40,7 @@
         <nav>
             <a href="">les produits</a>
             <a href="">cathegoris</a>
+            <a href="ajouter_produit">ajouter_produit</a>
 
         </nav>
     </header>
@@ -59,6 +60,7 @@
                         <div class="btn-center">
                             <a href="detail/{{ $produit->id }}" class="btn btn-info m-1">Voir Détail</a>
                             <a href="supprimer/{{ $produit->id }}" class="btn btn-danger m-1">Supprimer</a>
+                            <a href="modifier_produit/{{ $produit->id }}" class="btn btn-primary m-1">modifier</a>
                         </div>
                     </div>
                 </div>

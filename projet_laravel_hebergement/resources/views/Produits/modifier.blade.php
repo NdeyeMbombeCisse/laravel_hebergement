@@ -14,19 +14,21 @@
     </div>
     @endif
     {{-- <h1 class="text-center">Ajouter une categorie de produit</h1> --}}
-    <form class="form container" action="sauvegarder_produit" method="POST">
+    <form class="form container" action="{{ url('sauvegarder_produit_modification/' .$produit->id) }}" method="POST">
         @csrf
+        <input type="hidden" class="form-control" id="reference" name="id"  value="{{ $produit->id }}">
+
         <input type="hidden" class="form-control" id="reference" name="user_id"  value="1">
         <div class="mb-3 ">
           <label for="reference" class="form-label">referenciel du produit?</label>
-            <input type="text" class="form-control" id="reference" name="reference" >
+            <input type="text" class="form-control" id="reference" name="reference"  value="{{ $produit->reference }}">
           @error('reference')
           <div class="alert alert-danger">{{ $message }}</div>    
           @enderror
         </div>
         <div class="mb-3 ">
             <label for="designation" class="form-label">designtion de la categorie?</label>
-              <input type="text" class="form-control" id="designation" name="designation" >
+              <input type="text" class="form-control" id="designation" name="designation"  value="{{ $produit->designation }}">
             @error('designation')
             <div class="alert alert-danger">{{ $message }}</div>    
             @enderror
@@ -34,10 +36,10 @@
          
           <div class="mb-3 ">
             <label for="cathegorie_id" class="form-label">categorie du produit</label>
-            <select class="form-select form-select-sm" aria-label="Small select example" name="cathegorie_id">
-                @foreach ($cathegories as $cathegorie )
-                    <option value="{{ $cathegorie->id }}">{{ $cathegorie->libelle }}</option>
-                @endforeach
+            <select class="form-select form-select-sm" aria-label="Small select example" name="cathegorie_id">   
+                    @foreach($cathegories as $cathegorie)
+                        <option value="{{ $cathegorie->id }}"{{ $cathegorie->id == $produit->cathegories_id ? 'selected' : '' }}>{{ $cathegorie->libelle }}</option>
+                    @endforeach 
             </select>
             @error('cathegorie_id')
             <div class="alert alert-danger">{{ $message }}</div>    
@@ -45,14 +47,14 @@
           </div>
           <div class="mb-3 ">
             <label for="prix_unitaire" class="form-label">prix_unitaire de la categorie?</label>
-              <input type="text" class="form-control" id="prix_unitaire" name="prix_unitaire" >
+              <input type="text" class="form-control" id="prix_unitaire" name="prix_unitaire"  value="{{ $produit->prix_unitaire }}" >
             @error('prix_unitaire')
             <div class="alert alert-danger">{{ $message }}</div>    
             @enderror
           </div>
           <div class="mb-3 ">
             <label for="url_img" class="form-label">url_img de la categorie?</label>
-              <input type="text" class="form-control" id="url_img" name="url_img" >
+              <input type="text" class="form-control" id="url_img" name="url_img"  value="{{ $produit->url_img }}" >
             @error('url_img')
             <div class="alert alert-danger">{{ $message }}</div>    
             @enderror
@@ -73,3 +75,10 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
   </body>
 </html>
+
+
+{{-- <select name="articles_id" id="articles_id" class="form-control">
+    @foreach($articles as $article)
+        <option value="{{ $article->id }}"{{ $article->id == $comments->articles_id ? 'selected' : '' }}>{{ $article->nom }}</option>
+    @endforeach
+    </select> --}}
