@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Foundation\Auth\User;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -19,11 +19,12 @@ public function sauvegarde_user(Request $request){
         'email'=>'required|email'
 
     ],[
-        'name.required'=>'le champ prenom et nom est requis',
-        'email.required'=>'le champ email est requis',
-        'password.required'=>'le champ password est requis',
+        'name.required'=>'le champs name est requis',
+         'password.required'=>'le champs password est requis',
+          'email.required'=>'le champs email est requis'
     ]);
-    User::create($request->all());
+    $user=User::create($request->all());
+    auth()->login($user);
     return redirect()->back()->with('status','utilisateur ajoute avec sucees');
 }
 
