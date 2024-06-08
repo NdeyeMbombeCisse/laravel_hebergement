@@ -65,4 +65,7 @@ class ProduitController extends Controller
         $produit->update($request->all());
         return redirect('afficher_produit')->with('status','produit modifie avec succes');
     }
+
+
+   
 }

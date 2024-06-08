@@ -22,7 +22,7 @@
            
         }
         nav{
-            text-align: center;
+            display: flex;
             font-size: 27px;
         }
         nav a{
@@ -41,6 +41,8 @@
             <a href="">les produits</a>
             <a href="">cathegoris</a>
             <a href="ajouter_produit">ajouter_produit</a>
+            <a href="#" onclick="document.getElementById('logout-form').submit()"><form action="deconnexion" method="POST" id="logout-form">@csrf</form>Deconnexion</a>
+            <a href="inscription"> Connexion</a>
 
         </nav>
     </header>

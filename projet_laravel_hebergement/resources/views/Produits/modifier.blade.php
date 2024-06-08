@@ -77,8 +77,3 @@
 </html>
 
 
-{{-- <select name="articles_id" id="articles_id" class="form-control">
-    @foreach($articles as $article)
-        <option value="{{ $article->id }}"{{ $article->id == $comments->articles_id ? 'selected' : '' }}>{{ $article->nom }}</option>
-    @endforeach
-    </select> --}}

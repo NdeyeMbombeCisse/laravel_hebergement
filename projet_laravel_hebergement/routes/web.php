@@ -1,8 +1,10 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CathegorieController;
 use App\Http\Controllers\ProduitController;
 use Illuminate\Support\Facades\Route;
+
 
 Route::get('/', function () {
     return view('welcome');
@@ -22,6 +24,17 @@ Route::get('detail/{id}',[ProduitController::class, 'detail_produit']);
 Route::get('supprimer/{id}',[ProduitController::class, 'supprmier_produit']);
 Route::get('modifier_produit/{id}',[ProduitController::class, 'modifier_produit']);
 Route::post('sauvegarder_produit_modification/{id}',[ProduitController::class, 'sauvegarder_produit_modification']);
+
+// partie user
+Route::get('inscription',[AuthController::class, 'ajout_user']);
+Route::post('sauvegarde_user',[AuthController::class, 'sauvegarde_user']);
+Route::get('connexion',[AuthController::class, 'connexion']);
+Route::post('verification_connexion',[AuthController::class,'verification_connexion']);
+Route::post('deconnexion',[AuthController::class,'deconnexion']);
+
+
+
+
 
 
 
