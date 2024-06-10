@@ -39,11 +39,15 @@
     <header>
         <nav>
             <a href="">les produits</a>
-            <a href="">cathegoris</a>
+            <a href="afficher_cathegorie">cathegoris</a>
+            @auth
             <a href="ajouter_produit">ajouter_produit</a>
-            <a href="#" onclick="document.getElementById('logout-form').submit()"><form action="deconnexion" method="POST" id="logout-form">@csrf</form>Deconnexion</a>
-            <a href="inscription"> Connexion</a>
-
+            <a href="#" onclick="document.getElementById('logout-form').submit()"><form action="deconnexion" method="POST" id="logout-form">@csrf</form>Deconnexion</a> 
+            @endauth
+            @guest
+            <a href="connexion"> Connexion</a>
+    
+            @endguest
         </nav>
     </header>
    
@@ -61,8 +65,11 @@
                         <h6 class="card-text text-center">{{ $produit->prix_unitaire }} FCFA</h6>
                         <div class="btn-center">
                             <a href="detail/{{ $produit->id }}" class="btn btn-info m-1">Voir Détail</a>
+                            @auth
                             <a href="supprimer/{{ $produit->id }}" class="btn btn-danger m-1">Supprimer</a>
-                            <a href="modifier_produit/{{ $produit->id }}" class="btn btn-primary m-1">modifier</a>
+                            <a href="modifier_produit/{{ $produit->id }}" class="btn btn-primary m-1">modifier</a>  
+                            @endauth
+                            
                         </div>
                     </div>
                 </div>

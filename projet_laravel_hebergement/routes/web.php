@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CathegorieController;
+use App\Http\Controllers\CommandeController;
 use App\Http\Controllers\ProduitController;
 use Illuminate\Support\Facades\Route;
 
@@ -31,6 +32,13 @@ Route::post('sauvegarde_user',[AuthController::class, 'sauvegarde_user']);
 Route::get('connexion',[AuthController::class, 'connexion']);
 Route::post('verification_connexion',[AuthController::class,'verification_connexion']);
 Route::post('deconnexion',[AuthController::class,'deconnexion']);
+
+// passer une commande
+Route::get('commander',[CommandeController::class, 'commander']);
+Route::post('sauvegarde_commande',[CommandeController::class,'sauvegarde_commande']);
+
+Route::get('dashbord',[CommandeController::class, 'dashbord']);
+
 
 
 

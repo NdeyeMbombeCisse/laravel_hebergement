@@ -80,6 +80,8 @@
                <input type="password" id="password" name="password" >
 
                <button type="submit" class="btn">S'inscrire</button>
+               <p>vous v'avez pas de compe ?<a href="{{ url('inscription') }}">S'inscrire</a>
+               </p>
            </fieldset>
        </form>
    </div>

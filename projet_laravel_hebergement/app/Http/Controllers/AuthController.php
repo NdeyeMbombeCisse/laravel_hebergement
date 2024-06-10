@@ -43,8 +43,14 @@ public function sauvegarde_user(Request $request){
     );
 
         if(auth()->attempt($request->only('email','password')))
-        {
-            return redirect('afficher_produit');
+        { $user = auth()->user(); 
+            if($user->role==='admin'){
+                 return redirect('dashbord');
+            }elseif($user->role ==='personnel') {
+                return redirect('afficher_produit');
+            }elseif($user->role ==='user_simple'){
+                return redirect('commander');
+            }  
         }else{
             return redirect()->back()->withErrors('vous n\'etes pas autorisée à vous  connecter');
         }

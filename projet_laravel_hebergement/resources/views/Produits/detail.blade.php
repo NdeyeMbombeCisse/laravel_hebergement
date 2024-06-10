@@ -35,7 +35,7 @@
               <p class="card-text">{{ $produit->etat }}</p>
               <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
           </div>
-          <div class="btn-center"> <a href="detail/{{ $produit->id }}" class="btn btn-info  ">commander</a></div>
+          <div class="btn-center"> <a href="{{ url('connexion') }}" class="btn btn-info  ">commander</a></div>
 
         </div>
       </div>

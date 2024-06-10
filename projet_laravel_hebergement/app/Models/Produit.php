@@ -2,9 +2,12 @@
 
 namespace App\Models;
 
+use App\Models\Cathegorie;
+use App\Models\Commande;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Foundation\Auth\User;
 
 class Produit extends Model
@@ -26,5 +29,9 @@ class Produit extends Model
 
     public function user():BelongsTo{
         return $this->belongsTo(User::class);
+    }
+    public function commandes(): BelongsToMany
+    {
+        return $this->belongsToMany(Commande::class, 'commande_produit');
     }
 }
