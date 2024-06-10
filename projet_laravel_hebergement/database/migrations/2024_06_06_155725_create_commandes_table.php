@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('commandes', function (Blueprint $table) {
             $table->id();
             $table->string('reference');
-            $table->integer('montant-total');
+            $table->integer('montant_total');
             $table->enum('etat_commande',['valide','annule','en_cours']);
             $table->timestamps();
             $table->unsignedBigInteger('user_id');

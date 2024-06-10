@@ -14,7 +14,7 @@ Route::get('/', function () {
 Route::get('ajouter_cathegorie',[CathegorieController::class,'ajouter_cathegorie']);
 Route::post('sauvegarder_categorie',[CathegorieController::class, 'sauvegarder_categorie']);
 Route::get('afficher_cathegorie',[CathegorieController::class, 'afficher_cathegorie']);
-Route::get('supprimer/{id}',[CathegorieController::class, 'supprimer_cathegorie']);
+Route::get('supprimer/{id}',[CathegorieController::class, 'supprimer_cathegorie'])  ;
 Route::get('modifier/{id}',[CathegorieController::class, 'modifer_cathegorie']);
 Route::post('sauvegarder_categorie_modification/{id}',[CathegorieController::class, 'sauvegarder_categorie_modification']);
 // partie produit
@@ -36,10 +36,14 @@ Route::post('deconnexion',[AuthController::class,'deconnexion']);
 // passer une commande
 Route::get('commander',[CommandeController::class, 'commander']);
 Route::post('sauvegarde_commande',[CommandeController::class,'sauvegarde_commande']);
-
+Route::get('liste_commande',[CommandeController::class, 'dashbord']);
 Route::get('dashbord',[CommandeController::class, 'dashbord']);
 
 
+// gestion panier
+Route::post('ajouterpanier/{produitId}', [ProduitController::class,'ajouterAuPanier']);
+Route::get('panier', [ProduitController::class, 'afficherPanier']);
+Route::post('valider',[CommandeController::class,'valider_commande']);
 
 
 

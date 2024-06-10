@@ -67,5 +67,35 @@ class ProduitController extends Controller
     }
 
 
-   
+   // gestion de panier
+
+   public function ajouterAuPanier(Request $request, $produitId)
+   {
+       $produit = Produit::find($produitId);
+
+       if (!$produit) {
+           return redirect()->back()->with('error', 'Produit non trouvé.');
+       }
+
+       $panier = session()->get('panier');
+
+       // Ajouter le produit au panier
+       $panier[] = [
+           'id' => $produit->id,
+           'nom' => $produit->reference,
+           'prix' => $produit->prix_unitaire,
+           // Vous pouvez ajuster la quantité selon vos besoins
+       ];
+
+       session()->put('panier', $panier);
+
+       return redirect()->back()->with('success', 'Produit ajouté au panier avec succès.');
+   }
+
+   public function afficherPanier()
+   {
+       $panier = session()->get('panier', []);
+
+       return view('panier')->with('panier', $panier);
+   }
 }

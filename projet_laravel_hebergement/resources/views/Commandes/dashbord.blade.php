@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard</title>
     <link rel="stylesheet" href="styles.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
     <style>body {
         font-family: 'Arial', sans-serif;
         background: #f4f4f4;
@@ -138,8 +140,43 @@
                 <p>This is a simple dashboard template.</p>
                 <!-- Add your content here -->
             </div>
+            <h1 class="text-center">Liste des differentes comande</h1>
+        <table class="table container">
+            <thead>
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Reference</th>
+                <th scope="col">Etat</th>
+                <th scope="col">Montant</th>
+                <th scope="col">Date</th>
+                <th scope="col">Valider</th>
+                <th scope="col">supprimer</th>
+              </tr>
+            </thead>
+            @foreach ($commandes as $commande )
+    
+            <tbody>
+              <tr>
+                <th scope="row">{{ $commande->id }}</th>
+                <td>{{ $commande->reference }}</td>
+                <td>{{ $commande->etat_commande }}</td>
+                <td>{{ $commande->montant_total }}</td>
+                <td>{{ $commande->created_at }}</td>
+
+
+                <td><a href="modifier/{{ $commande->id }}" class="btn btn-info" >Valider</a></td>
+                <td><a href="supprimer/{{ $commande->id }}" class="btn btn-danger">supprimer</a></td>
+              </tr>
+            </tbody>
+            @endforeach
+          
+          </table>
+          
         </div>
+        
     </div>
+   
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </body>

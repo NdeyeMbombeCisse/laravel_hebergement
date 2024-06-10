@@ -32,6 +32,6 @@ class Produit extends Model
     }
     public function commandes(): BelongsToMany
     {
-        return $this->belongsToMany(Commande::class, 'commande_produit');
+        return $this->belongsToMany(Commande::class, 'produit_commandes');
     }
 }

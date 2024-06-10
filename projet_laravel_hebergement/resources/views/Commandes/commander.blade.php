@@ -82,8 +82,8 @@
                    @enderror
                    
                    <label for="email">Montant total</label>
-                   <input type="text" id="email" name="montant-total">
-                   @error('email')
+                   <input type="text" id="montant_total" name="montant_total">
+                   @error('montant_total')
                        <div  class="alert alert-danger">{{ $message }}</div>
                    @enderror
 
@@ -92,6 +92,12 @@
                    @error('password')
                        <div  class="alert alert-danger">{{ $message }}</div>
                    @enderror
+{{-- 
+                   <label for="date_commande">date</label>
+                   <input type="hidden" id="date_commande" name="date_commande" value="<?php echo date('Y-m-d'); ?>" readonly>
+                   @error('date_commande')
+                       <div  class="alert alert-danger">{{ $message }}</div>
+                   @enderror --}}
     
                    <button type="submit" class="btn">S'inscrire</button>
                </fieldset>

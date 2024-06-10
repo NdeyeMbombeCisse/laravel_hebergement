@@ -14,9 +14,9 @@ class Commande extends Model
 
     protected $fillable=[
         'reference',
-        'montant-total',
+        'montant_total',
         'date_commande',
-        'etat-commande',
+        'etat_commande',
         'user_id',
     ];
 
@@ -26,6 +26,6 @@ class Commande extends Model
 
     public function produits(): BelongsToMany
     {
-        return $this->belongsToMany(Produit::class, 'commande_produit');          
+        return $this->belongsToMany(Produit::class, 'produit_commandes');          
     }
 }

@@ -19,10 +19,7 @@ class RoleMiddleware
      */
     public function handle(Request $request, Closure $next,string $role): Response
     {
-        // if (!auth()->user()->hasRole($role)) {
-        //     // Vous pouvez personnaliser cette réponse en fonction de vos besoins
-        //     abort(403, 'Unauthorized');
-        // }
+
     return $next($request);
     }
 }
