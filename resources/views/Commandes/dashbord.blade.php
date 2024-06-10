@@ -104,22 +104,17 @@
             </div>
             <ul class="list-unstyled components">
                 <li class="active">
-                    <a href="#home">Home</a>
+                    <a href="dashbord">Home</a>
                 </li>
                 <li>
-                    <a href="#orders">Orders</a>
+                    <a href="afficher_cathegorie">categorie</a>
                 </li>
                 <li>
-                    <a href="#users">Users</a>
+                    <a href="afficher_produit">Products</a>
                 </li>
                 <li>
-                    <a href="#products">Products</a>
-                </li>
-                <li>
-                    <a href="#settings">Settings</a>
-                </li>
-                <li>
-                    <a href="#logout">Logout</a>
+                    <a href="#" onclick="document.getElementById('logout-form').submit()"><form action="deconnexion" method="POST" id="logout-form">@csrf</form>Deconnexion</a> 
+
                 </li>
             </ul>
         </nav>

@@ -1,4 +1,4 @@
-<!doctype html>
+ <!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -35,7 +35,7 @@
               <p class="card-text">{{ $produit->etat }}</p>
               <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
           </div>
-          <div class="btn-center"> <a href="{{ url('connexion') }}" class="btn btn-info  ">commander</a></div>
+          <div class="btn-center"> <a href="{{ url('afficher_produit') }}" class="btn btn-info  ">fermer</a></div>
 
         </div>
       </div>
@@ -43,4 +43,6 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
   </body>
-</html>
+</html> 
+
+
