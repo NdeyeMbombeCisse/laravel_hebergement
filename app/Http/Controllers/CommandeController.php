@@ -57,10 +57,14 @@ public function valider_commande(Request $request){
         // Effacer la session du panier une fois la commande validée
         session()->forget('panier');
 
-        return redirect('panier')->with('success', 'Commande validée avec succès.');
+        return redirect('panier')->with('status', 'Commande validée avec succès.');
     }
 
-}
+    
+        }
+    
+
+
 
 
 

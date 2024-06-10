@@ -94,8 +94,26 @@ class ProduitController extends Controller
 
    public function afficherPanier()
    {
+
+
        $panier = session()->get('panier', []);
 
        return view('panier')->with('panier', $panier);
    }
+
+   public function annuler($produitId)
+    {
+        $panier = session()->get('panier', []);
+
+        foreach ($panier as $index => $item) {
+            if ($item['id'] == $produitId) {
+                unset($panier[$index]);
+                break;
+            }
+        }
+
+        session()->put('panier', $panier);
+
+        return redirect()->back()->with('success', 'Produit supprimé du panier avec succès.');
+    }
 }

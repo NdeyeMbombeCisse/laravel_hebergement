@@ -44,6 +44,8 @@ Route::get('dashbord',[CommandeController::class, 'dashbord']);
 Route::post('ajouterpanier/{produitId}', [ProduitController::class,'ajouterAuPanier']);
 Route::get('panier', [ProduitController::class, 'afficherPanier']);
 Route::post('valider',[CommandeController::class,'valider_commande']);
+Route::post('supprimerDuPanier/{id}',[ProduitController::class,'annuler']);
+
 
 
 

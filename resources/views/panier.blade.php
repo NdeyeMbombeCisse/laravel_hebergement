@@ -15,6 +15,8 @@
         display: flex;
         font-size: 27px;
     }
+   
+    
     nav a{
         color: white;
         font-weight: 900;
@@ -28,6 +30,11 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
   </body>
 </html>
+@if(session ('status'))
+<div class="alert alert-success">
+    {{ session ('status') }}
+</div>
+@endif
 <header>
     <nav>
         <a href="afficher_produit">les produits</a>
@@ -64,10 +71,21 @@
                     <li>{{ $item['nom'] }} - {{ $item['prix'] }} </li>
                 @endforeach
             </ul></p>
+            <div class="contenu">
               <p class="card-text"><small class="text-body-secondary"><form action="valider" method="post">
                 @csrf
                 <button class="btn btn-primary" type="submit">Valider la Commande</button>
             </form></small></p>
+
+
+            <p class="card-text">
+                    <form action="{{ url('supprimerDuPanier', $item['id']) }}" method="post" style="display:inline;">
+                      @csrf
+                      @method('post')
+                      <button type="submit" class="btn btn-danger btn-sm">Supprimer</button>
+                  </form>
+                <small class="text-body-secondary">  
+           
             </div>
           </div>
         </div>
