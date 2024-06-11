@@ -65,6 +65,12 @@ class ProduitController extends Controller
         $produit->update($request->all());
         return redirect('afficher_produit')->with('status','produit modifie avec succes');
     }
+    // page pour le user simple
+    public function user_simple(){
+        $users=User::all();
+        $produits=Produit::all();
+        return view('Produits.user_simple',compact('produits','users'));
+    }
 
 
    // gestion de panier

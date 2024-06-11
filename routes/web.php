@@ -7,9 +7,10 @@ use App\Http\Controllers\ProduitController;
 use Illuminate\Support\Facades\Route;
 
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
+
+Route::get('/', [ProduitController::class, 'afficher_produit']);
+
 // partie cathegorie
 Route::get('ajouter_cathegorie',[CathegorieController::class,'ajouter_cathegorie']);
 Route::post('sauvegarder_categorie',[CathegorieController::class, 'sauvegarder_categorie']);
@@ -25,6 +26,7 @@ Route::get('detail/{id}',[ProduitController::class, 'detail_produit']);
 Route::get('supprimer/{id}',[ProduitController::class, 'supprmier_produit']);
 Route::get('modifier_produit/{id}',[ProduitController::class, 'modifier_produit']);
 Route::post('sauvegarder_produit_modification/{id}',[ProduitController::class, 'sauvegarder_produit_modification']);
+Route::get('user_simple',[ProduitController::class,'user_simple']);
 
 // partie user
 Route::get('inscription',[AuthController::class, 'ajout_user']);

@@ -49,7 +49,7 @@ public function sauvegarde_user(Request $request){
             }elseif($user->role ==='personnel') {
                 return redirect('afficher_produit');
             }elseif($user->role ==='user_simple'){
-                return redirect('afficher_produit');
+                return redirect('user_simple');
             }  
         }else{
             return redirect()->back()->withErrors('vous n\'etes pas autorisée à vous  connecter');
