@@ -1,4 +1,4 @@
-<!doctype html>
+{{-- <!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -26,4 +26,26 @@
       </form>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
   </body>
-</html>
+</html> --}}
+
+@extends('layouts.dashbord')
+@section('content')
+@if(session ('status'))
+    <div class="alert alert-success">
+        {{ session ('status') }}
+    </div>
+    @endif
+    <h1 class="text-center">Modifier une categorie de produit</h1>
+    <form class="form container" action="{{ url('sauvegarder_categorie_modification/'.$cathegorie->id) }}" method="POST">
+        @csrf
+        <div class="mb-3 ">
+          <label for="libelle" class="form-label">libelle de la categorie?</label>
+          <input type="text" class="form-control" id="libelle" name="libelle" value="{{ $cathegorie->libelle }}" >
+          @error('libelle')
+          <div class="alert alert-succes">{{ $message }}</div>    
+          @enderror
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+
+@endsection

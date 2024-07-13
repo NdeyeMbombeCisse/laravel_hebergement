@@ -2,13 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Controller;
 use App\Models\Cathegorie;
+use App\Models\Produit;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class CathegorieController extends Controller
 {
     public function ajouter_cathegorie(){
-        return view('Cathegories.ajouter');
+        // return view('Cathegories.ajouter');
+        return view('Cathegories.afficher');
     }
 
     public function sauvegarder_categorie(Request $request){
@@ -27,8 +31,26 @@ class CathegorieController extends Controller
     public function afficher_cathegorie(){
         $cathegories=Cathegorie::all();
         return view('Cathegories.afficher',compact('cathegories'));
+
+    }
+
+    public function afficher_cathegorie_acceuil(){
+        $cathegories=Cathegorie::all();
+        return view('Produits.afficher',compact('cathegories'));
+        return view('Produits.user_simple',compact('cathegories'));
+
+
+    }
+
+    public function detail_cathegorie($id){
+         $categorie = Cathegorie::findOrFail($id);
+    $produits = Produit::where('cathegorie_id', $id)->get();
+    return view('Cathegories.fruit', compact('categorie','produits'));
+       
     }
     public function supprimer_cathegorie($id){
+        DB::table('produit_commandes')->where('produit_id', $id)->delete();
+
         $cathegorie=Cathegorie::find($id);
         $cathegorie->delete();
         return redirect()->back()->with('status');

@@ -15,8 +15,11 @@ Route::get('/', [ProduitController::class, 'afficher_produit']);
 Route::get('ajouter_cathegorie',[CathegorieController::class,'ajouter_cathegorie']);
 Route::post('sauvegarder_categorie',[CathegorieController::class, 'sauvegarder_categorie']);
 Route::get('afficher_cathegorie',[CathegorieController::class, 'afficher_cathegorie']);
+Route::get('afficher_cathegorie_acceuil',[ProduitController::class, 'afficher_produit']);
 Route::get('supprimer/{id}',[CathegorieController::class, 'supprimer_cathegorie'])  ;
 Route::get('modifier/{id}',[CathegorieController::class, 'modifer_cathegorie']);
+Route::get('detail_categorie/{id}',[CathegorieController::class, 'detail_cathegorie'])->name('categorie.produits');
+
 Route::post('sauvegarder_categorie_modification/{id}',[CathegorieController::class, 'sauvegarder_categorie_modification']);
 // partie produit
 Route::get('ajouter_produit',[ProduitController::class,'ajouter_produit']);
@@ -43,7 +46,7 @@ Route::get('dashbord',[CommandeController::class, 'dashbord']);
 
 
 // gestion panier
-Route::post('ajouterpanier/{produitId}', [ProduitController::class,'ajouterAuPanier']);
+Route::post('ajouterpanier/{id}', [ProduitController::class,'ajouterAuPanier'])->name('ajouter.panier');
 Route::get('panier', [ProduitController::class, 'afficherPanier']);
 Route::post('valider',[CommandeController::class,'valider_commande']);
 Route::post('supprimerDuPanier/{id}',[ProduitController::class,'annuler']);

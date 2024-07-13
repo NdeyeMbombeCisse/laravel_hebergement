@@ -1,13 +1,7 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>projet Laravel_hebergement</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-  </head>
-  <body>
-    <h1 class="text-center">Liste des differentes cathegorie</h1>
+
+@extends('layouts.dashbord')
+@section('content')
+<h1 class="text-center">Liste des differentes cathegorie</h1>
     <table class="table container">
         <thead>
           <tr>
@@ -30,9 +24,25 @@
         @endforeach
       
       </table>
-      <td><a href="ajouter_cathegorie" class="btn btn-primary">ajouter</a></td>
+      {{-- <td><a href="ajouter_cathegorie" class="btn btn-primary">ajouter</a></td> --}}
 
-      
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-  </body>
-</html>
+      @if(session ('status'))
+      <div class="alert alert-success">
+          {{ session ('status') }}
+      </div>
+      @endif
+      <h1 class="text-center">Ajouter une categorie de produit</h1>
+      <form class="form container" action="sauvegarder_categorie" method="POST">
+          @csrf
+          <div class="mb-3 ">
+            <label for="libelle" class="form-label">libelle de la categorie?</label>
+            <input type="text" class="form-control" id="libelle" name="libelle" >
+            @error('libelle')
+            <div class="alert alert-succes">{{ $message }}</div>    
+            @enderror
+          </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+  
+
+@endsection

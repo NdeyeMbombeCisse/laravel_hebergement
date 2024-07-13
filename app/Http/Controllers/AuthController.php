@@ -25,7 +25,7 @@ public function sauvegarde_user(Request $request){
     ]);
     $user=User::create($request->all());
     auth()->login($user);
-    return redirect()->back()->with('status','utilisateur ajoute avec sucees');
+    return redirect('connexion')->with('status','utilisateur ajoute avec sucees');
 }
 
     public function connexion(){
@@ -52,7 +52,7 @@ public function sauvegarde_user(Request $request){
                 return redirect('user_simple');
             }  
         }else{
-            return redirect()->back()->withErrors('vous n\'etes pas autorisée à vous  connecter');
+            return redirect()->back()->with('erreur','vous n\'etes pas autorisée à vous  connecter');
         }
     }
 

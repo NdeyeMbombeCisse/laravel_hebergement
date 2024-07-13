@@ -52,7 +52,7 @@
             display: block;
             width: 100%;
             padding: 0.75rem;
-            background: #007BFF;
+            background: #5FAA3C;
             color: #fff;
             border: none;
             border-radius: 5px;
@@ -60,6 +60,18 @@
             cursor: pointer;
             /* transition: background 0.3s; */
         }
+
+        h1{
+        font-family: 'Times New Roman', Times, serif;
+        color: #ce0033;
+        /* color:#5FAA3C; */
+
+
+      }
+      a{
+        text-decoration: none
+      }
+
         .btn:hover {
             background: #0056b3;
         }
@@ -75,19 +87,19 @@
             @csrf
                <fieldset>
                    <label for="name">Prénom et nom</label>
-                   <input type="text" id="name" name="name">
+                   <input type="text" id="name" name="name" value="{{ old('name') }}">
                    @error('name')
                        <div  class="alert alert-danger">{{ $message }}</div>
                    @enderror
                    
                    <label for="email">Email</label>
-                   <input type="email" id="email" name="email">
+                   <input type="email" id="email" name="email" value="{{ old('email') }}">
                    @error('email')
                        <div  class="alert alert-danger">{{ $message }}</div>
                    @enderror
                    
                    <label for="password">Mot de passe</label>
-                   <input type="password" id="password" name="password">
+                   <input type="password" id="password" name="password" value="{{ old('password') }}">
                    @error('password')
                        <div  class="alert alert-danger">{{ $message }}</div>
                    @enderror
@@ -95,6 +107,7 @@
                    <button type="submit" class="btn">S'inscrire</button>
                </fieldset>
            </form>
+           <p>Vous avez deja un compte? <a href="connexion">se connecter</a></p>
        </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
   </body>

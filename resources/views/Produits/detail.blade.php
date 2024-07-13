@@ -1,4 +1,4 @@
- <!doctype html>
+ {{-- <!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -20,8 +20,8 @@
   </head>
   <body>
     <h1 class="text-center">les detail du produit {{ $produit->designation }}</h1>
-<div class="mon_contenu">
-    <img src="{{ $produit->url_img }}" class="img-fluid" alt="...">
+ <div class="mon_contenu">
+    <img src="{{ $produit->url_img }}" class="img-fluid" alt="..."> 
 
     <div class="card mb-3" style="max-width: 540px;">
         <div class="row g-0">
@@ -35,7 +35,7 @@
               <p class="card-text">{{ $produit->etat }}</p>
               <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
           </div>
-          <div class="btn-center"> <a href="{{ url('afficher_produit') }}" class="btn btn-info  ">fermer</a></div>
+          <div class="btn-center"> <a href="{{ url('user_simple') }}" class="btn btn-info  ">fermer</a></div>
 
         </div>
       </div>
@@ -45,4 +45,9 @@
   </body>
 </html> 
 
+ --}}
 
+
+ 
+
+ 
