@@ -119,7 +119,7 @@ class ProduitController extends Controller
         $users=User::all();
         // $produits=Produit::all();
         $produits = Produit::take(8)->get();
-        $cathegories=Cathegorie::all();
+        $cathegories=Cathegorie::take(4)->get();
 
         return view('Produits.user_simple',compact('produits','users','cathegories'));
     }

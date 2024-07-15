@@ -16,7 +16,7 @@
         font-family: 'Times New Roman', Times, serif;
       }
 
-      h1{
+      h1,h3{
         font-family: "Leckerli One", cursive;
         color: #ce0033;
         /* color:#5FAA3C; */
@@ -218,15 +218,28 @@ text-align: center;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         padding: 20px;
         width: 340px;
+        height: 360px;
         border-radius: 8px;
         text-align: center;
       }
       .produit img {
         /* max-width: 100%; */
-        width: 200px;
+        width: 120px;
         height: auto;
+        margin-top: 20px;
         border-radius: 8px;
       }
+
+      .deconnexion{
+            padding: 5px;
+            border-radius: 30px;
+            color: #5FAA3C;
+            background-color:white;
+            border: 1px solid white;
+            font-size: 23px;
+            width: 150px;
+
+          }
 
     
 
@@ -261,7 +274,7 @@ text-align: center;
             <a href="user_simple">les produits</a>
             @auth
             <a href="ajouter_produit">ajouter produit</a>
-            <a href="#" onclick="document.getElementById('logout-form').submit()"><form action="deconnexion" method="POST" id="logout-form">@csrf</form>Deconnexion</a> 
+            <a href="#" class="deconnexion"  onclick="document.getElementById('logout-form').submit()"><form action="deconnexion" method="POST" id="logout-form">@csrf</form>Deconnexion</a> 
             {{-- <a href="panier"><i class="fa-solid fa-cart-plus"></i>
               @if(session()->has('nombreElementsPanier') && session('nombreElementsPanier') > 0)
             <span  style="top: -10px; right: -10px;">
@@ -301,9 +314,12 @@ text-align: center;
     <h1 class="titre_categorie">Nos catégories de produits </h1>       
    <div class="categorie">
      <div class="les_categories">
-      @foreach ($categories as $categorie )
+      @foreach ($categories as $cathegorie )
        <div class="card">
-       <h2> <a href="{{ url('categorie.produits', ['categorie_id' => $categorie->id]) }}">{{ $categorie->libelle }}</a></h2>
+        {{-- <h2> <a href="detail_categoriepersonnel/{{ $cathegorie->id }}">{{ $cathegorie->libelle }}</a></h2> --}}
+        <h2>
+          <a href="/detail_categoriepersonnel/{{ $cathegorie->id }}">{{ $cathegorie->libelle }}</a>
+      </h2>
       </div> 
       @endforeach
      </div>  
@@ -318,6 +334,14 @@ text-align: center;
                   <img src="{{ $produit->url_img }}" class="card-img-top" alt="...">
                       <h4 class="card-text text-center">{{ $produit->designation }}</h4>
                       <h6 class="card-text text-center">{{ $produit->prix_unitaire }} FCFA</h6>
+                      <button type="button" class="btn btn-success m-1 btn-detail"
+                      data-bs-toggle="modal" 
+                      data-bs-target="#modalDetail"
+                      data-designation="{{ $produit->designation }}"
+                      data-reference="{{ $produit->reference }}"
+                      data-cathegorie="{{ $produit->cathegorie_id }}"
+                      data-prix="{{ $produit->prix_unitaire }}"
+                      data-etat="{{ $produit->etat }}"><i class="fa-solid fa-eye " style="color: white; "></i></button>
                           {{-- <a href="detail/{{ $produit->id }}" class="btn btn-primary m-1"><i class="fa-solid fa-eye " style="color: white; "></i></a> --}}
                           @auth
                           <a href="supprimer/{{ $produit->id }}" class="btn btn-danger m-1"><i class="fa-solid fa-trash" style="color: white;"></i></a>
@@ -328,6 +352,50 @@ text-align: center;
 
            
         </div>
+
+        <div class="modal fade" id="modalDetail" tabindex="-1" aria-labelledby="modalDetailLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="modalDetailLabel"></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+               <h3>Reference:</h3><h5 id="modalReference"></h5>
+                <h6 id="modalCathegorie"></h6>
+                <h3>Prix:</h3><h6 id="modalPrix"></h6>
+                <h3>Etat:</h3><h6 id="modalEtat"></h6>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                <a href="{{ url('user_simple') }}" class="btn btn-info">Fermer et quitter</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+      
+        <script>
+          // JavaScript pour charger les détails du produit dans la modal
+          const btnDetails = document.querySelectorAll('.btn-detail');
+          btnDetails.forEach(btn => {
+            btn.addEventListener('click', function() {
+              const designation = btn.getAttribute('data-designation');
+              const reference = btn.getAttribute('data-reference');
+              const cathegorie = btn.getAttribute('data-cathegorie');
+              const prix = btn.getAttribute('data-prix');
+              const etat = btn.getAttribute('data-etat');
+      
+              document.getElementById('modalDetailLabel').textContent = designation;
+              // document.getElementById('modalImg').src = "{{ $produit->url_img }}"; // Mettez l'URL de l'image ici
+              document.getElementById('modalReference').textContent = reference;
+              document.getElementById('modalCathegorie').textContent = cathegorie;
+              document.getElementById('modalPrix').textContent = prix + " FCFA";
+              document.getElementById('modalEtat').textContent = etat;
+            });
+          });
+        </script>
    
  <footer>
   <h3>Nous contacter</h3>

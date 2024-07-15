@@ -48,6 +48,12 @@ class CathegorieController extends Controller
     return view('Cathegories.fruit', compact('categorie','produits'));
        
     }
+    public function detail_cathegoriepersonnel($id)
+    {
+        $categorie = Cathegorie::findOrFail($id);
+        $produits = Produit::where('cathegorie_id', $id)->get();
+        return view('Cathegories.detailperso', compact('categorie', 'produits'));
+    }
     public function supprimer_cathegorie($id){
         DB::table('produit_commandes')->where('produit_id', $id)->delete();
 

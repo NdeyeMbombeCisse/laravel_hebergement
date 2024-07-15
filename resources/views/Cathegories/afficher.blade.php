@@ -1,7 +1,7 @@
 
 @extends('layouts.dashbord')
 @section('content')
-<h1 class="text-center">Liste des differentes cathegorie</h1>
+<h1 class="text-center">Liste des differentes Categories</h1>
     <table class="table container">
         <thead>
           <tr>
@@ -31,7 +31,7 @@
           {{ session ('status') }}
       </div>
       @endif
-      <h1 class="text-center">Ajouter une categorie de produit</h1>
+      <h1 class="text-center">Ajouter une Categorie de produit</h1>
       <form class="form container" action="sauvegarder_categorie" method="POST">
           @csrf
           <div class="mb-3 ">

@@ -229,6 +229,19 @@ text-align: center;
 
     }
 
+    .deconnexion{
+            padding: 5px;
+            border-radius: 30px;
+            color: #5FAA3C;
+            background-color:white;
+            border: 1px solid white;
+            font-size: 23px;
+            width: 150px;
+
+          }
+
+    
+
     .lien{
       display: flex;
       margin-left: 120px;
@@ -273,7 +286,7 @@ text-align: center;
             <a href="">les produits</a>
             @auth
             {{-- <a href="ajouter_produit">ajouter produit</a> --}}
-            <a href="#" onclick="document.getElementById('logout-form').submit()"><form action="deconnexion" method="POST" id="logout-form">@csrf</form>Deconnexion</a> 
+            <a href="#" class="deconnexion" onclick="document.getElementById('logout-form').submit()"><form action="deconnexion" method="POST" id="logout-form">@csrf</form>Deconnexion</a> 
             {{-- <a href="panier">voir le panier</a> --}}
             <a href="panier"><i class="fa-solid fa-cart-plus"></i>
               @if(session()->has('nombreElementsPanier') && session('nombreElementsPanier') > 0)
@@ -341,7 +354,6 @@ text-align: center;
                         data-cathegorie="{{ $produit->cathegorie_id }}"
                         data-prix="{{ $produit->prix_unitaire }}"
                         data-etat="{{ $produit->etat }}"><i class="fa-solid fa-eye " style="color: white; "></i></button>
-                        {{-- <div class="lien_detail"><a href="detail/{{ $produit->id }}" class=" btn btn-success m-1" ><i class="fa-solid fa-eye " style="color: white; "></i></a></div> --}}
                         @auth
                         <form action="ajouterpanier/{{ $produit->id }}" method="post">
                             @csrf

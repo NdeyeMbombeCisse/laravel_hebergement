@@ -145,6 +145,17 @@ text-align: center;
           font-size: 23px;
           width: 150px;
         }
+
+        .deconnexion{
+          padding: 5px;
+          border-radius: 30px;
+          color: #5FAA3C;
+          background-color:white;
+          border: 1px solid white;
+          font-size: 23px;
+          width: 150px;
+
+        }
         nav a{
             color: white;
             font-weight: 900;
@@ -231,9 +242,11 @@ text-align: center;
    }
 
 
-   <style>
+   
     .card {
         height: 100%;
+        height: 400px;
+
     }
 
     .desgnation {
@@ -261,7 +274,7 @@ text-align: center;
             <a href="{{ url('user_simple') }}">Les produits</a>
 
             @auth
-            <a href="{{ url('deconnexion') }}" onclick="document.getElementById('logout-form').submit()"><form action="deconnexion" method="POST" id="logout-form">@csrf</form>Deconnexion</a> 
+            <a href="#" class="deconnexion" onclick="document.getElementById('logout-form').submit()"><form action="{{ url('deconnexion') }}" method="POST" id="logout-form">@csrf</form>Deconnexion</a> 
             <a href="{{ url('panier') }}"><i class="fa-solid fa-cart-plus"></i>
               @if(session()->has('nombreElementsPanier') && session('nombreElementsPanier') > 0)
             <span  style="top: -10px; right: -10px;">
@@ -271,7 +284,7 @@ text-align: center;
              </a> 
              @endauth
              @guest
-            <a href="connexion"><button>Connexion</button> </a>
+            <a href="{{ url('connexion') }}"><button>Connexion</button> </a>
             @endguest
         </nav>
        
@@ -357,7 +370,6 @@ text-align: center;
         const etat = btn.getAttribute('data-etat');
 
         document.getElementById('modalDetailLabel').textContent = designation;
-        // document.getElementById('modalImg').src = "{{ $produit->url_img }}"; // Mettez l'URL de l'image ici
         document.getElementById('modalReference').textContent = reference;
         document.getElementById('modalCathegorie').textContent = cathegorie;
         document.getElementById('modalPrix').textContent = prix + " FCFA";
@@ -398,111 +410,3 @@ text-align: center;
 </html>    
 
 
-
- {{-- <!doctype html>
-<html lang="en">
-  <head>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Leckerli+One&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css">
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bootstrap demo</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <style>  --}}
-
-     {{-- /* new style */ 
-      body{
-        font-family: 'Times New Roman', Times, serif;
-      }
-
-  
-    <div class="les_fruits">
-        <div class="fruit">
-            <img src="{{ asset('images/image 49.png ') }}" alt="">
-            <h5> Orange fraiche</h5>
-            <h5> 1000 FCFA</h5>
-
-
-        </div>
-        <div class="fruit">
-            <img src="{{ asset('images/image 27.png ') }}" alt="">
-          <h5>Banane frais</h5>
-          <h5>1000 FCFA</h5>
-        </div>
-
-        <div class="fruit">
-            <img src="{{ asset('images/image 28.png ') }}" alt="">
-          <h5>Ananasfrais</h5>
-          <h5>1000 FCFA</h5>
-        </div>
-
-        <div class="fruit">
-            <img src="{{ asset('images/image 32.png ') }}" alt="">
-          <h5>fraise frais</h5>
-          <h5>1000 FCFA</h5>
-
-        
-        </div>
-    </div>
-<div class="rest">  --}}
-    {{-- <div class="fruit">
-        <img src="{{ asset('images/image 31.png ') }}" alt="">
-      <h5>Coco frais</h5>
-      <h5>1000 FCFA</h5>
-    </div>
-    <div class="fruit">
-        <img src="{{ asset('images/image 34.png ') }}" alt="">
-      <h5>Pomme frais</h5>
-      <h5>1000 FCFA</h5>
-    </div>
-    <div class="fruit">
-        <img src="{{ asset('images/image 33.png ') }}" alt="">
-      <h5>Papaye frais</h5>
-      <h5>1000 FCFA</h5>
-    </div> 
-
-    <div class="fruit">
-        <img src="{{ asset('images/image 53.png ') }}" alt="">
-      <h5>Papaye frais</5>
-      <h5>1000 FCFA</h3>
-    </div> 
-</div> 
-         
-        
-
- --}}
-
-    
-    
-  {{-- <footer>
-  <h3>Nous contacter</h3>
-  <div class="contacts">
-     <i class="fa-solid fa-phone"></i>78 405 53 67  
-    <i class="fa-solid fa-envelope"></i>ndeye@gmail.com 
-     <i class="fa-solid fa-location-dot"></i>Cite Keur Gorgui 
-  </div>
-  
-    <div class="trait"><hr> </div> 
-  
-     <h3>Nos reseaux</h3> 
-     <div class="reseau">
-      <i class="fa-brands fa-instagram fa-1x"></i>
-      <i class="fa-brands fa-twitter fa-1x"></i>
-      <i class="fa-brands fa-tiktok fa-1x"></i>
-    </div> 
-    @copycore
-   </footer> 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-  </body>
-</html>     --}}
-
-
- {{-- <h1>Produits de la catégorie {{ $categorie->libelle }}</h1>
-
-<ul>
-    @foreach ($produits as $produit)
-        <li>{{ $produit->designation }}</li>
-    @endforeach
-</ul> --}}

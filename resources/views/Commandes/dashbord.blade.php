@@ -199,9 +199,13 @@
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </body>
 </html>  --}}
+<style>
+
+</style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 @extends('layouts.dashbord')
 @section('content')
-<h1 class="text-center">Liste des differentes comande</h1>
+<h1 class="text-center">Liste des differentes commandes</h1>
 <table class="table container">
     <thead>
       <tr>
@@ -232,6 +236,9 @@
     @endforeach
   
   </table>
+  <div class="d-flex justify-content-center">
+    {{ $commandes->links() }}
+</div>
   
 </div>
 

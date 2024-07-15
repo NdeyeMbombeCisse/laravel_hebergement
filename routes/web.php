@@ -19,6 +19,7 @@ Route::get('afficher_cathegorie_acceuil',[ProduitController::class, 'afficher_pr
 Route::get('supprimer/{id}',[CathegorieController::class, 'supprimer_cathegorie'])  ;
 Route::get('modifier/{id}',[CathegorieController::class, 'modifer_cathegorie']);
 Route::get('detail_categorie/{id}',[CathegorieController::class, 'detail_cathegorie'])->name('categorie.produits');
+Route::get('detail_categoriepersonnel/{id}', [CathegorieController::class, 'detail_cathegoriepersonnel']);
 
 Route::post('sauvegarder_categorie_modification/{id}',[CathegorieController::class, 'sauvegarder_categorie_modification']);
 // partie produit
